@@ -1,0 +1,171 @@
+
+<div class="dashboard-content">
+  <h2 class="dashboard-heading">Car Space: PID000012</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2 mb-2">
+        <label class="form-label fw-semibold mb-0">Provider:</label>
+        <p class="mb-0 fw-5">John Wick</p>
+      </div>
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2 mb-2">
+        <label class="form-label fw-semibold mb-0">Address:</label>
+        <p class="mb-0 fw-5">34 Belmore Rd, Randwick NSW 2031
+        </p>
+      </div>
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2 mb-2">
+        <label class="form-label fw-semibold mb-0">Type of Car:</label>
+        <p class="mb-0 fw-5">Sedan | SUV | MPV
+        </p>
+      </div>
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2 mb-2">
+        <label class="form-label fw-semibold mb-0">Car Spaces:</label>
+        <p class="mb-0">5</p>
+      </div>
+      <div class="ms-2 d-flex flex-column flex-md-row align-items-md-center mb-2">
+        <label class="form-label fw-semibold mb-0">Available:</label>
+        <p class="mb-0">2 (green)</p>
+      </div>
+      <div class="ms-2 d-flex flex-column flex-md-row align-items-md-center mb-2">
+        <label class="form-label fw-semibold mb-0">Reserved:</label>
+        <p class="mb-0">3 (red)</p>
+      </div>
+      <div class="ms-2 d-flex flex-column flex-md-row align-items-md-start mb-2">
+        <label class="form-label fw-semibold mb-0">Preview:</label>
+        <div class="space-preview">
+          <div class="each-space reserved-space">
+            <span>P01</span>
+          </div>
+          <div class="each-space reserved-space">
+            <span>P02</span>
+          </div>
+          <div class="each-space available-space">
+            <span>P03</span>
+            <input class="form-check-input" type="radio" name="selectedSpace" id="selectedSpace3" checked>
+          </div>
+          <div class="each-space reserved-space">
+            <span>P04</span>
+          </div>
+          <div class="each-space available-space">
+            <span>P05</span>
+            <input class="form-check-input" type="radio" name="selectedSpace" id="selectedSpace5">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+        <label class="form-label fw-semibold mb-0">Rate Cost:</label>
+        <div class="d-flex align-items-center gap-3">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+            <label class="form-check-label input-custom-label" for="flexRadioDefault1">
+              $3/hour
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+            <label class="form-check-label input-custom-label" for="flexRadioDefault2">
+              $18/day
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-1">
+        <label class="form-label fw-semibold mb-0">Arrival Time:</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Select time</option>
+          <option value="1">16:00</option>
+          <option value="2">18:00</option>
+          <option value="3">19:00</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <span class="text-danger">&ast;</span> Note: Reservation always in the same day, using hourly or daily.
+      </div>
+      <div class="d-flex align-items-center justify-content-start">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- reservation Modal -->
+<div class="modal fade" id="reservationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="reservationModalLabel">Reservation Detail</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Provider:</label>
+          <p class="mb-0 fw-5">John Wick</p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Address:</label>
+          <p class="mb-0 fw-5">34 Belmore Rd, Randwick NSW 2031
+          </p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Type of Car:</label>
+          <p class="mb-0 fw-5">Sedan | SUV | MPV
+          </p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Park Reservation ID:</label>
+          <p class="mb-0">P001</p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Reservation Date:</label>
+          <p class="mb-0">Feburary 23, 2024</p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Reservation Time:</label>
+          <p class="mb-0">16:00</p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Duration:</label>
+          <p class="mb-0">4 hours</p>
+        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mb-2">
+          <label class="form-label fw-semibold mb-0">Cost:</label>
+          <p class="mb-0">$12</p>
+        </div>
+        <div class="mb-3">
+          <span class="text-danger">&ast;</span> Note: A barcode will be generated after you book the slot. You must scan the barcode to enter
+          the parking lot before 6:15 pm. Otherwise, auto-cancel reservation will be applied.
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label mb-0 input-custom-label" for="flexCheckDefault">
+            I agree
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmationModal">Book</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- confirmation Modal -->
+<div class="modal fade" id="confirmationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="confirmationModalLabel">Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <p class="mb-0">A new order <strong>ID100055</strong> has been created and sent to your email. Please check it. Thank you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.dashboard-layout{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 18rem;
+  max-width: 100%;
+  background-color: var(--clr-neutral-100);
+  /* background-color: #f0f2fe; */
+  min-height: 100vh;
+  transition: all 350ms ease-in;
+}
+
+.btn.btn-menu{
+  max-width: fit-content;
+  box-shadow: none;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.main-content{
+  padding: 1.5rem;
+  flex: 1;
+}
+
+@media (max-width: 991px){
+  .dashboard-layout{
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,24 @@
+<header>
+  <div class="d-flex">
+    <button class="btn btn-menu btn-custom" (click)="toggleSidebar()">
+      <img src="../../../assets/svgs/hamburger-menu-icon.svg" />
+    </button>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-profile btn-custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://picsum.photos/200/300"/>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li>
+        <a class="dropdown-item" routerLink="/dashboard/profile">
+            <span>My profile</span>
+        </a>
+      </li>
+      <li class="w-100 mt-2">
+        <button class="btn btn-outline-primary w-100" (click)="logout()">
+          Logout
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>

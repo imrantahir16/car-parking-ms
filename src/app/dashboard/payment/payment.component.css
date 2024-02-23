@@ -1,0 +1,11 @@
+.card{
+  max-width: 600px;
+}
+
+.form-label{
+  min-width: 110px;
+}
+
+.input-custom-label{
+  padding-top: .15rem;
+}

@@ -1,0 +1,142 @@
+<div class="auth-content">
+  <h1 class="auth-title text-center">Provider Registration</h1>
+  <form class="auth-form">
+    <div class="mb-3">
+      <label for="FName" class="form-label">Full Name</label>
+      <input type="text" class="form-control" name="FName" [(ngModel)]="authRequestModal.fullName" id="FName" placeholder="Enter your full name here" />
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" name="username" [(ngModel)]="authRequestModal.username" id="username" placeholder="Enter your username" />
+    </div>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="Email" name="email" [(ngModel)]="authRequestModal.email"
+        placeholder="Email address" />
+    </div>
+    <div class="mb-3 password-input">
+      <label for="Password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="Password" name="password" [(ngModel)]="authRequestModal.password"
+        placeholder="Password" />
+    </div>
+    <div class="mb-3 password-input">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="authRequestModal.confirmPassword"
+        placeholder="Confirm password" />
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" class="form-control" name="address" [(ngModel)]="authRequestModal.address" id="address" placeholder="Enter your address" />
+    </div>
+    <div class="mb-3">
+      <label for="spaces" class="form-label">Car spaces</label>
+      <input type="text" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
+    </div>
+    <div class="mb-3">
+      <label for="backAccount" class="form-label">Bank account</label>
+      <input type="text" class="form-control" name="backAccount" [(ngModel)]="authRequestModal.backAccount" id="backAccount" placeholder="Enter your back account number" />
+    </div>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Type of car</label>
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckMicro">
+          <label class="form-check-label" for="flexCheckMicro">
+            Micro 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckHatchback">
+          <label class="form-check-label" for="flexCheckHatchback">
+            Hatchback 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckSedan">
+          <label class="form-check-label" for="flexCheckSedan">
+            Sedan
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckSUV">
+          <label class="form-check-label" for="flexCheckSUV">
+            SUV 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckMPV">
+          <label class="form-check-label" for="flexCheckMPV">
+            MPV 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckWagon">
+          <label class="form-check-label" for="flexCheckWagon">
+            Wagon 
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Type of car</label>
+      <div class="d-flex flex-column gap-3">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck3ph">
+            <label class="form-check-label" for="flexCheck3ph">
+              $3/hour
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck3p5ph">
+            <label class="form-check-label" for="flexCheck3p5ph">
+              $3.5/hour
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck4ph">
+            <label class="form-check-label" for="flexCheck4ph">
+              $4/hour
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck4p5ph">
+            <label class="form-check-label" for="flexCheck4p5ph">
+              $4.5/hour
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck5ph">
+            <label class="form-check-label" for="flexCheck5ph">
+              $5/hour
+            </label>
+          </div>
+        </div> 
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck18d">
+            <label class="form-check-label" for="flexCheck18d">
+              $18/daily 
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheck24d">
+            <label class="form-check-label" for="flexCheck24d">
+              $24/daily 
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column align-items-center justify-content-between mt-3 gap-3">
+      <button class="btn btn-primary" (click)="register()">Register</button>
+      <div class="d-flex flex-column align-items-center gap-2 w-100">
+        <p class="link_text">Already have an account? <a  routerLink="/login">Login</a></p>
+      </div>
+    </div>
+  </form>
+  <!-- <div class="auth-body">
+    <div class="body-content">
+    </div>
+  </div> -->
+</div>

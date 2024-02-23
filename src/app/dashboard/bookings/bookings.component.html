@@ -1,0 +1,203 @@
+
+<div class="dashboard-content">
+  <ng-container *ngIf="this.userType === 'provider'">
+    <h2 class="dashboard-heading">Current Bookings</h2>
+    <div class="table-card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Park ID</th>
+              <th scope="col">Booking ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Start time</th>
+              <th scope="col">Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>PID000015</td>
+              <td>BID000015</td>
+              <td>John Wick</td>
+              <td>Feburary 16, 2024</td>
+              <td>17:00</td>
+              <td>4 hours</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>PID000015</td>
+              <td>BID000015</td>
+              <td>John Wick</td>
+              <td>Feburary 16, 2024</td>
+              <td>17:00</td>
+              <td>4 hours</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>PID000015</td>
+              <td>BID000015</td>
+              <td>John Wick</td>
+              <td>Feburary 16, 2024</td>
+              <td>17:00</td>
+              <td>4 hours</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>PID000015</td>
+              <td>BID000015</td>
+              <td>John Wick</td>
+              <td>Feburary 16, 2024</td>
+              <td>17:00</td>
+              <td>4 hours</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>PID000015</td>
+              <td>BID000015</td>
+              <td>John Wick</td>
+              <td>Feburary 16, 2024</td>
+              <td>17:00</td>
+              <td>4 hours</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="this.userType === 'consumer'">
+    <h2 class="dashboard-heading">Bookings History</h2>
+    <div class="table-card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date</th>
+              <th scope="col">Booking ID</th>
+              <th scope="col">Park ID</th>
+              <th scope="col">Provider</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Feburary 16, 2024</td>
+              <td>BID000015</td>
+              <td>PID000012</td>
+              <td>John Wick</td>
+              <td>
+                <div class="table-actions">
+                  <button class="btn btn-action-table" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    <img src="../../../assets/svgs/review-icon.svg"/>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Feburary 16, 2024</td>
+              <td>BID000015</td>
+              <td>PID000012</td>
+              <td>John Wick</td>
+              <td>
+                <div class="table-actions">
+                  <button class="btn btn-action-table" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    <img src="../../../assets/svgs/review-icon.svg"/>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Feburary 16, 2024</td>
+              <td>BID000015</td>
+              <td>PID000012</td>
+              <td>John Wick</td>
+              <td>
+                <div class="table-actions">
+                  <button class="btn btn-action-table" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    <img src="../../../assets/svgs/review-icon.svg"/>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Feburary 16, 2024</td>
+              <td>BID000015</td>
+              <td>PID000012</td>
+              <td>John Wick</td>
+              <td>
+                <div class="table-actions">
+                  <button class="btn btn-action-table" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    <img src="../../../assets/svgs/review-icon.svg"/>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Feburary 16, 2024</td>
+              <td>BID000015</td>
+              <td>PID000012</td>
+              <td>John Wick</td>
+              <td>
+                <div class="table-actions">
+                  <button class="btn btn-action-table" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    <img src="../../../assets/svgs/review-icon.svg"/>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+<!-- review Modal -->
+<div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="reviewModalLabel">Review</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">John Wick |34 Belmore Road | P03</div>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h5 style="min-width: 90px">Service:</h5>
+          <div class="rating">
+            <span *ngFor="let star of stars; let i = index" (click)="selectServiceRating(i + 1)" [class.selected]="i < selectedServiceRating">&#9733;</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h5 style="min-width: 90px">Hygiene:</h5>
+          <div class="rating">
+            <span *ngFor="let star of stars; let i = index" (click)="selectHygieneRating(i + 1)" [class.selected]="i < selectedHygieneRating">&#9733;</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h5 style="min-width: 90px">Saftey:</h5>
+          <div class="rating">
+            <span *ngFor="let star of stars; let i = index" (click)="selectSafteyRating(i + 1)" [class.selected]="i < selectedSafteyRating">&#9733;</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="commentTextarea" class="form-label">Comment</label>
+          <textarea class="form-control" id="commentTextarea" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+        <button type="button" class="btn btn-primary">Post</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

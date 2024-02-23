@@ -1,0 +1,11 @@
+.rating {
+  font-size: 24px;
+}
+
+.rating span {
+  cursor: pointer;
+}
+
+.rating span.selected {
+  color: gold;
+}
