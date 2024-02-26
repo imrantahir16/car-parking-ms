@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ProviderSignupComponent } from './signup/provider-signup/provider-signup.component';
 import { ConsumerSignupComponent } from './signup/consumer-signup/consumer-signup.component';
+import { SignupComponent } from './signup/signup/signup.component';
 
 
 
@@ -22,6 +23,7 @@ import { ConsumerSignupComponent } from './signup/consumer-signup/consumer-signu
     ResetPasswordComponent,
     ProviderSignupComponent,
     ConsumerSignupComponent,
+    SignupComponent,
   ],
   imports: [
     CommonModule,
