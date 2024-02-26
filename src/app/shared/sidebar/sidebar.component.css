@@ -6,9 +6,9 @@
   min-width: 17.5rem;
   overflow-y: auto;
   border-right: 1px solid #eaecf0;
-  /* transition: margin-left 0.35s ease-in-out, left 0.35s ease-in-out, margin-right 0.35s ease-in-out, right 0.35s ease-in-out; */
   transition: all 0.35s ease-in-out;
-  background-color: var(--clr-neutral-100);
+  background-color: hsl(200, 100%, 99%);
+  
   /* background-color: #f0f2fe; */
   z-index: 10;
 }

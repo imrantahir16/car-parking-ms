@@ -5,6 +5,8 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: hsl(200, 100%, 99%);
+  border-bottom: 1px solid #eaecf0;
 }
 
 .btn-custom{
