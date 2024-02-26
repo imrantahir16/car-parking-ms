@@ -380,7 +380,7 @@ body {
   text-decoration: none;
 }
 
-.anchor_link {
+.anchor-link {
   text-decoration: none;
   color: var(--clr-primary);
   font-size: 1rem;
@@ -388,6 +388,11 @@ body {
   line-height: 120%; /* 1.2rem */
   letter-spacing: 0.005rem;
   cursor: pointer;
+  transition: all 250ms ease-in;
+}
+
+.anchor-link:hover {
+  color: var(--clr-primary-hover);
 }
 
 .link_text {
