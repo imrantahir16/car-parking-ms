@@ -13,7 +13,7 @@ export class LoginComponent {
   authRequestModal: any;
 
   constructor(
-    private _apiService: ApiCallingService,
+    // private _apiService: ApiCallingService,
     private _loader: NgxUiLoaderService,
     private _toastr: ToastrService,
     private _router: Router,
