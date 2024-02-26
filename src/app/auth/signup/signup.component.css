@@ -34,12 +34,13 @@
   white-space: nowrap;
   width: 1px;
 }
+
 .custom-checkbox .checkbox-input:checked + .checkbox-tile {
   border-color: var(--clr-primary);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   background-color: var(--clr-primary);
 }
-/* .custom-checkbox .checkbox-input:checked + .checkbox-tile .checkbox-icon, */
+
 .custom-checkbox .checkbox-input:checked + .checkbox-tile .checkbox-label {
   color: var(--clr-primary);
   color: #fff;

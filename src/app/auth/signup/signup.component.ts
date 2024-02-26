@@ -5,17 +5,13 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiCallingService } from 'src/app/shared/generic-api-calling.service';
 
 @Component({
-  selector: 'app-provider-signup',
-  templateUrl: './provider-signup.component.html',
-  styleUrls: ['./provider-signup.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class ProviderSignupComponent {
+export class SignupComponent {
   authRequestModal: any;
-  isPassVisible: boolean = false;
-  isConfirmPassVisible: boolean = false;
-  imageFilePreview: any = null;
-  fileUploaded: boolean = false;
-
+  signupAs: string = 'consumer'
 
   constructor(
     private _apiService: ApiCallingService,
@@ -70,6 +66,15 @@ export class ProviderSignupComponent {
       this._loader.stop();
       this._router.navigate(['/auth/login']);
     }, 1000);
+
+    if(this.signupAs === 'consumer'){
+      console.log("signup as consumer");
+    }
+
+    if(this.signupAs === 'provider'){
+      console.log("signup as provider");
+    }
+
   }
 
   checkValidation(): boolean {
@@ -89,8 +94,6 @@ export class ProviderSignupComponent {
       this._toastr.error('Please enter password', 'Error!');
       return false;
     }
-
-
     return true;
   }
 

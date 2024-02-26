@@ -5,9 +5,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ProviderSignupComponent } from './signup/provider-signup/provider-signup.component';
-import { ConsumerSignupComponent } from './signup/consumer-signup/consumer-signup.component';
-import { SignupComponent } from './signup/signup/signup.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -21,10 +19,6 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
-      },
-      {
-        path: 'signup/provider',
-        component: ProviderSignupComponent,
       },
       {
         path: 'signup',

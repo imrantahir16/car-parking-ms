@@ -8,9 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ProviderSignupComponent } from './signup/provider-signup/provider-signup.component';
-import { ConsumerSignupComponent } from './signup/consumer-signup/consumer-signup.component';
-import { SignupComponent } from './signup/signup/signup.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -21,8 +19,6 @@ import { SignupComponent } from './signup/signup/signup.component';
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ProviderSignupComponent,
-    ConsumerSignupComponent,
     SignupComponent,
   ],
   imports: [
