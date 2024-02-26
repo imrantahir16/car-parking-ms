@@ -6,6 +6,7 @@
   width: 100%;
   padding: 1.5rem 1rem;
   background-color: var(--clr-neutral-100-hover);
+  background: linear-gradient(45deg, #1c5098, #688aba);
 }
 
 @media (max-width: 768px){
