@@ -17,8 +17,9 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
-        path: '',
-        component: HomeComponent,
+        path: '', 
+        redirectTo: 'parking-lots', 
+        pathMatch: 'full' 
       },
       {
         path: 'parking-lots',
