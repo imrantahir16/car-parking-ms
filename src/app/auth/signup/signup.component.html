@@ -72,96 +72,29 @@
           <input type="text" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
         </div>
         <div class="mb-3">
-          <label for="Email" class="form-label">Type of car</label>
-          <div class="d-flex align-items-center gap-2 flex-wrap">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckMicro">
-              <label class="form-check-label" for="flexCheckMicro">
-                Micro 
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckHatchback">
-              <label class="form-check-label" for="flexCheckHatchback">
-                Hatchback 
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckSedan">
-              <label class="form-check-label" for="flexCheckSedan">
-                Sedan
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckSUV">
-              <label class="form-check-label" for="flexCheckSUV">
-                SUV 
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckMPV">
-              <label class="form-check-label" for="flexCheckMPV">
-                MPV 
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckWagon">
-              <label class="form-check-label" for="flexCheckWagon">
-                Wagon 
-              </label>
-            </div>
-          </div>
+          <label for="typeOfCar" class="form-label">Type of car</label>
+          <select id="typeOfCar" class="form-select" aria-label="Default select example">
+            <option selected>Select type of car</option>
+            <option value="Micro">Micro</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="MPV">MPV</option>
+            <option value="Wagon">Wagon</option>
+          </select>
         </div>
         <div class="mb-3">
-          <label class="form-label">Type of car</label>
-          <div class="d-flex flex-column gap-3">
-            <div class="d-flex align-items-center gap-2 flex-wrap">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck3ph">
-                <label class="form-check-label" for="flexCheck3ph">
-                  $3/hour
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck3p5ph">
-                <label class="form-check-label" for="flexCheck3p5ph">
-                  $3.5/hour
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck4ph">
-                <label class="form-check-label" for="flexCheck4ph">
-                  $4/hour
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck4p5ph">
-                <label class="form-check-label" for="flexCheck4p5ph">
-                  $4.5/hour
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck5ph">
-                <label class="form-check-label" for="flexCheck5ph">
-                  $5/hour
-                </label>
-              </div>
-            </div> 
-            <div class="d-flex align-items-center gap-2 flex-wrap">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck18d">
-                <label class="form-check-label" for="flexCheck18d">
-                  $18/daily 
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheck24d">
-                <label class="form-check-label" for="flexCheck24d">
-                  $24/daily 
-                </label>
-              </div>
-            </div>
-          </div>
+          <label id="typeOfBills" class="form-label">Cost / bill</label>
+          <select id="typeOfBills" class="form-select" aria-label="Default select example">
+            <option selected>Select type of bill</option>
+            <option value="$3/hour">$3/hour</option>
+            <option value="$3.5/hour">$3.5/hour</option>
+            <option value="$4/hour">$4/hour</option>
+            <option value="$4.5/hour">$4.5/hour</option>
+            <option value="$5/hour">$5/hour</option>
+            <option value="$18/daily">$18/daily</option>
+            <option value="$24/daily">$24/daily</option>
+          </select>
         </div>
       </ng-container>
       <div class="d-flex flex-column align-items-center justify-content-between mt-3">
