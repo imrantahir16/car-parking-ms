@@ -23,7 +23,7 @@
     <form class="auth-form" (ngSubmit)="register()">
       <div class="mb-3">
         <label for="FName" class="form-label">Full Name</label>
-        <input type="text" class="form-control" name="FName" [(ngModel)]="authRequestModal.fullName" id="FName" placeholder="Enter your full name here" />
+        <input type="text" class="form-control" name="FName" [(ngModel)]="authRequestModal.fName" id="FName" placeholder="Enter your full name here" />
       </div>
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
@@ -63,17 +63,17 @@
         </div>
       </ng-container>
       <div class="mb-3">
-        <label for="backAccount" class="form-label">Bank account</label>
-        <input type="text" class="form-control" name="backAccount" [(ngModel)]="authRequestModal.backAccount" id="backAccount" placeholder="Enter your back account number" />
+        <label for="bankAccount" class="form-label">Bank account</label>
+        <input type="text" class="form-control" name="bankAccount" [(ngModel)]="authRequestModal.bankAccount" id="bankAccount" placeholder="Enter your back account number" />
       </div>
       <ng-container *ngIf="this.signupAs === 'provider'">
         <div class="mb-3">
           <label for="spaces" class="form-label">Car spaces</label>
-          <input type="text" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
+          <input type="number" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
         </div>
         <div class="mb-3">
           <label for="typeOfCar" class="form-label">Type of car</label>
-          <select id="typeOfCar" class="form-select" aria-label="Default select example">
+          <select id="typeOfCar" class="form-select" aria-label="Default select example" name="carType" [(ngModel)]="authRequestModal.carType">
             <option selected>Select type of car</option>
             <option value="Micro">Micro</option>
             <option value="Hatchback">Hatchback</option>
@@ -84,16 +84,22 @@
           </select>
         </div>
         <div class="mb-3">
-          <label id="typeOfBills" class="form-label">Cost / bill</label>
-          <select id="typeOfBills" class="form-select" aria-label="Default select example">
+          <label id="typeOfBills" class="form-label">Cost / Bill (Hourly)</label>
+          <select id="typeOfBills" class="form-select" aria-label="Default select example" [(ngModel)]="authRequestModal.hourRate" name="hourRate">
             <option selected>Select type of bill</option>
-            <option value="$3/hour">$3/hour</option>
-            <option value="$3.5/hour">$3.5/hour</option>
-            <option value="$4/hour">$4/hour</option>
-            <option value="$4.5/hour">$4.5/hour</option>
-            <option value="$5/hour">$5/hour</option>
-            <option value="$18/daily">$18/daily</option>
-            <option value="$24/daily">$24/daily</option>
+            <option value="3">$3/hour</option>
+            <option value="3.5">$3.5/hour</option>
+            <option value="4">$4/hour</option>
+            <option value="4.5">$4.5/hour</option>
+            <option value="5">$5/hour</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label id="typeOfBills" class="form-label">Cost / Bill (Daily)</label>
+          <select id="typeOfBills" class="form-select" aria-label="Default select example" [(ngModel)]="authRequestModal.rate" name="dailyRate">
+            <option selected>Select type of bill</option>
+            <option value="18">$18/daily</option>
+            <option value="24">$24/daily</option>
           </select>
         </div>
       </ng-container>

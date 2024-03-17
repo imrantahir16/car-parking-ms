@@ -24,60 +24,37 @@ export class SignupComponent {
 
   setAuthRequestModal(): void {
     this.authRequestModal = {
-      fistName: '',
-      lastName: '',
-      email: '',
+      userType: this.signupAs,
+      fName: '',
       username: '',
+      email: '',
       password: '',
       confirmPassword: '',
+      address: '',
+      birthDate: '',
+      driverLicense: '',
+      vehiclePlate: '',
+      bankAccount: '',
+      // provider
+      spaces: '',
+      carType: '',
+      hourRate: '',
+      rate: ''
+
     };
   }
 
-  
-  register() {
-    // Check Validation
-    // let isValid = this.checkValidation();
-    // if (!isValid) {
-    //   return;
-    // }
-    // this._loader.start();
-    // this._apiService.PostData('Auth', 'login', this.authRequestModal).subscribe((res: any) => {
-    //   if (res.success) {
-    //     localStorage.setItem('user', JSON.stringify(res.data.user));
-    //     localStorage.setItem('token', res.data.token);
-    //     this._loader.stop();
-    //     setTimeout(() => {
-    //       this._router.navigate(['/dashboard/find-job']);
-    //     }, 1000);
-
-    //   }
-    //   else {
-    //     this._loader.stop();
-    //     this._toastr.error(res.data.message, 'Error!');
-    //   }
-    // }, (err: any) => {
-    //   this._loader.stop();
-    //   this._toastr.error('Connection Problem', 'Error!');
-    // })
-
-    // simulating fake register
-    this._loader.start();
-    setTimeout(() => {
-      this._loader.stop();
-      this._router.navigate(['/auth/login']);
-    }, 1000);
-
-    if(this.signupAs === 'consumer'){
-      console.log("signup as consumer");
-    }
-
-    if(this.signupAs === 'provider'){
-      console.log("signup as provider");
-    }
-
-  }
-
   checkValidation(): boolean {
+
+    if (this.authRequestModal.fName === '') {
+      this._toastr.error('Please enter name', 'Error!');
+      return false;
+    }
+
+    if (this.authRequestModal.username === '') {
+      this._toastr.error('Please enter username', 'Error!');
+      return false;
+    }
 
     if (this.authRequestModal.email === '') {
       this._toastr.error('Please enter email', 'Error!');
@@ -94,7 +71,95 @@ export class SignupComponent {
       this._toastr.error('Please enter password', 'Error!');
       return false;
     }
+
+    if (this.authRequestModal.confirmPassword === '') {
+      this._toastr.error('Please enter confirm password', 'Error!');
+      return false;
+    }
+
+    if (this.authRequestModal.confirmPassword !== this.authRequestModal.password) {
+      this._toastr.error('Password do not matched', 'Error!');
+      return false;
+    }
+
+    if (this.authRequestModal.address === '') {
+      this._toastr.error('Please enter address', 'Error!');
+      return false;
+    }
+
+    if (this.signupAs === 'consumer') {
+      if (this.authRequestModal.birthDate === '') {
+        this._toastr.error('Please enter birth date', 'Error!');
+        return false;
+      }
+
+      if (this.authRequestModal.driverLicense === '') {
+        this._toastr.error('Please enter driver license', 'Error!');
+        return false;
+      }
+
+      if (this.authRequestModal.vehiclePlate === '') {
+        this._toastr.error('Please enter vehicle plate', 'Error!');
+        return false;
+      }
+    }
+
+    if (this.authRequestModal.bankAccount === '') {
+      this._toastr.error('Please enter bank account', 'Error!');
+      return false;
+    }
+
+    if (this.signupAs === 'provider') {
+
+      if (this.authRequestModal.spaces === '') {
+        this._toastr.error('Please enter car spaces', 'Error!');
+        return false;
+      }
+
+      if (this.authRequestModal.carType === '') {
+        this._toastr.error('Please enter car type', 'Error!');
+        return false;
+      }
+
+      if (this.authRequestModal.hourRate === '') {
+        this._toastr.error('Please enter hour rate', 'Error!');
+        return false;
+      }
+
+      if (this.authRequestModal.rate === '') {
+        this._toastr.error('Please enter daily rate', 'Error!');
+        return false;
+      }
+    }
+
     return true;
   }
 
+  register() {
+    // Check Validation
+    let isValid = this.checkValidation();
+    if (!isValid) {
+      return;
+    }
+    this._loader.start();
+    this.authRequestModal.userType = this.signupAs;
+    this._apiService.PostData('users', 'signup', this.authRequestModal).subscribe((res: any) => {
+      if (res) {
+        this._toastr.success('User is registered successfully!', 'Success!');
+        this.setAuthRequestModal();
+        this._loader.stop();
+        setTimeout(() => {
+          this._router.navigate(['/auth/login']);
+        }, 1000);
+      }
+      else {
+        this._loader.stop();
+        this._toastr.error(res.data.message, 'Error!');
+      }
+    }, (err: any) => {
+      this._loader.stop();
+      this._toastr.error('Connection Problem', 'Error!');
+    })
+
+  }
 }

@@ -13,7 +13,7 @@ export class LoginComponent {
   authRequestModal: any;
 
   constructor(
-    // private _apiService: ApiCallingService,
+    private _apiService: ApiCallingService,
     private _loader: NgxUiLoaderService,
     private _toastr: ToastrService,
     private _router: Router,
@@ -28,40 +28,38 @@ export class LoginComponent {
     };
   }
 
-  
   login() {
-    // let isValid = this.checkValidation();
-    // if (!isValid) {
-    //   return;
-    // }
-    // this._loader.start();
-    // this._apiService.PostData('Auth', 'login', this.authRequestModal).subscribe((res: any) => {
-    //   if (res.success) {
-    //     localStorage.setItem('user', JSON.stringify(res.data.user));
-    //     localStorage.setItem('token', res.data.token);
-    //     this._loader.stop();
-    //     setTimeout(() => {
-    //       this._router.navigate(['/dashboard']);
-    //     }, 1000);
-
-    //   }
-    //   else {
-    //     this._loader.stop();
-    //     this._toastr.error(res.data.message, 'Error!');
-    //   }
-    // }, (err: any) => {
-    //   this._loader.stop();
-    //   this._toastr.error('Connection Problem', 'Error!');
-    // })
-
-    // simulating fake login
+    let isValid = this.checkValidation();
+    if (!isValid) {
+      return;
+    }
     this._loader.start();
-    setTimeout(() => {
+    this._apiService.PostData('users', 'login', this.authRequestModal).subscribe((res: any) => {
+      if (res) {
+        const user = {
+          userType: res.userType,
+          id: res.id,
+          email: res.email,
+          address: res.address,
+          userName: res.userName,
+          name: res.name
+        }
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', res.token);
+        this._loader.stop();
+        setTimeout(() => {
+          this._router.navigate(['/dashboard']);
+        }, 1000);
+      }
+      else {
+        this._loader.stop();
+        this._toastr.error(res.data.message, 'Error!');
+      }
+    }, (err: any) => {
       this._loader.stop();
-      this._router.navigate(['/dashboard']);
-    }, 1000);
+      this._toastr.error(err.error.message, 'Error!');
+    })
   }
-
 
   checkValidation(): boolean {
 

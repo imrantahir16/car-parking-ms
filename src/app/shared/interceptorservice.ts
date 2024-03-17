@@ -14,10 +14,10 @@ export class InterceptorService implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler): Observable<HttpEvent<any>> {
         if (localStorage.getItem('token') != null) {
-            const idToken = localStorage.getItem('token');
+            const token = localStorage.getItem('token');
             const cloned = req.clone({
                 headers: req.headers.set('Authorization',
-                    'Bearer ' + idToken)
+                    'Bearer ' + token)
             });
             return next.handle(cloned).pipe
                 (
@@ -25,19 +25,13 @@ export class InterceptorService implements HttpInterceptor {
                         (succ: any) => {
                             if (succ.body !== undefined) {
                                 if (succ.body.status === 401 || succ.body.status === 403) {
-                                    // localStorage.clear();
-                                    localStorage.removeItem('token');
-                                    localStorage.removeItem('user');
-                                    this._router.navigateByUrl('');
+                                    this.redirect();
                                 }
                             }
                         },
                         err => {
                             if (err.status === 401 || err.status === 403) {
-                                // localStorage.clear();
-                                localStorage.removeItem('token');
-                                localStorage.removeItem('user');
-                                this._router.navigateByUrl('');
+                                this.redirect();
                             }
                         }
                     )
@@ -46,6 +40,12 @@ export class InterceptorService implements HttpInterceptor {
         else {
             return next.handle(req);
         }
+    }
+
+    redirect(): void {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this._router.navigateByUrl('');
     }
 
 }
