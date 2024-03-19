@@ -44,12 +44,18 @@ export class LoginComponent {
           userName: res.userName,
           name: res.name
         }
+
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', res.token);
-        this._loader.stop();
+
         setTimeout(() => {
-          this._router.navigate(['/dashboard']);
+          if (user.userName !== 'admin') {
+            this._router.navigate(['/dashboard/spaces'], { queryParams: { userType: res.userType === 'provider_id' ? 'provider' : 'consumer' } });
+          } else {
+            this._router.navigate(['/dashboard']);
+          }
         }, 1000);
+        this._loader.stop();
       }
       else {
         this._loader.stop();

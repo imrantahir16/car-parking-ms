@@ -147,10 +147,21 @@ export class SignupComponent {
       if (res) {
         this._toastr.success('User is registered successfully!', 'Success!');
         this.setAuthRequestModal();
+        const user = {
+          userType: res.userType,
+          id: res.id,
+          email: res.email,
+          address: res.address,
+          userName: res.userName,
+          name: res.name
+        }
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', res.token);
         this._loader.stop();
         setTimeout(() => {
-          this._router.navigate(['/auth/login']);
+          this._router.navigate(['/dashboard/spaces'], { queryParams: { userType: res.userType === 'provider_id' ? 'provider' : 'consumer' } });
         }, 1000);
+        this._loader.stop();
       }
       else {
         this._loader.stop();
