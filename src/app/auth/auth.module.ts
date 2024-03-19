@@ -10,8 +10,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignupComponent } from './signup/signup.component';
 
-
-
 @NgModule({
   declarations: [
     AuthenticationComponent,
