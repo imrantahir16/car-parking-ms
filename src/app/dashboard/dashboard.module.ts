@@ -14,6 +14,8 @@ import { SpacesComponent } from './spaces/spaces.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SpaceDetailComponent } from './space-detail/space-detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
     PaymentComponent,
     SpaceDetailComponent,
     ProfileComponent,
-    
+    NotificationsComponent,
+    TransactionsComponent
   ],
   imports: [CommonModule, DashboardRoutingModule, SharedModule, FormsModule],
 })

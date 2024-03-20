@@ -9,6 +9,8 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { AuthGuard } from './shared/auth.guard';
 import { InterceptorService } from './shared/interceptorservice';
 import { FormsModule } from '@angular/forms';
+import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter';
+import { provideZxvbnServiceForPSM } from 'angular-password-strength-meter/zxcvbn';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,10 +61,12 @@ import { FormsModule } from '@angular/forms';
       minTime: 300,
     }),
     FormsModule,
+    PasswordStrengthMeterComponent
   ],
   providers: [
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    provideZxvbnServiceForPSM()
   ],
   bootstrap: [AppComponent],
 })

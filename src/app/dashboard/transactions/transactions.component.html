@@ -1,0 +1,48 @@
+<div class="dashboard-content">
+    <h2 class="dashboard-heading">Transactions</h2>
+    <div class="search-container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="mb-3">
+                    <label for="searchDateInput" class="form-label">Search Transaction</label>
+                    <input type="text" class="form-control" placeholder="Search Transaction" id="searchDateInput"
+                        name="searchDateInput" [(ngModel)]="searchTerm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5>{{isAdmin || userInfo.userType === 'provider_id' ? 'Total Revenue: ' : 'Total Amount: '}} ${{totalRevenue | number:'1.2-2'}}</h5>
+    <div class="table-card">
+        <div class="d-flex flex-column gap-3">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Customer ID</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Parking ID</th>
+                            <th scope="col">Provider ID</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col" *ngIf="isAdmin">Revenue (15%)</th>
+                            <th scope="col" *ngIf="userInfo.userType === 'provider_id'">Fee (15%)</th>
+                            <th scope="col" *ngIf="userInfo.userType === 'provider_id'">Earned Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let payment of payments | filter : searchTerm; let ndx = index;">
+                            <td>{{ndx + 1}}</td>
+                            <td>{{'CUSTOMER - ' + '00' + ndx + 1}}</td>
+                            <td>{{payment.name}}</td>
+                            <td>{{'PARKING - ' + '00' + ndx + 1}}</td>
+                            <td>{{'PROVIDER - ' + '00' + ndx + 1}}</td>
+                            <td>${{payment.totalAmountPaid | number:'1.2-2'}}</td>
+                            <td *ngIf="isAdmin || userInfo.userType === 'provider_id'">${{payment.websiteRevenue | number:'1.2-2'}}</td>
+                            <td>${{payment.totalAmountPaid - payment.websiteRevenue | number:'1.2-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

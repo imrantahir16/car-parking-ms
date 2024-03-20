@@ -8,16 +8,21 @@
             <th scope="col">#</th>
             <th scope="col">Provider ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
             <th scope="col">Address</th>
-            <th scope="col">Bank</th>
+            <th scope="col">Bank Account</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let provider of providers; let ndx = index;">
             <td>{{ndx + 1}}</td>
-            <td>{{provider._id}}</td>
+            <!-- <td>{{provider._id}}</td> -->
+            <td>{{'PROVIDER - ' + '00' + ndx + 1}}</td>
             <td>{{provider.fName}}</td>
+            <td>{{provider.username}}</td>
+            <td>{{provider.email}}</td>
             <td>{{provider.address}}</td>
             <td>{{provider.bankAccount}}</td>
             <td>
@@ -76,6 +81,48 @@
           <input type="text" class="form-control" name="bankAccount" [(ngModel)]="editProviderModal.bankAccount"
             id="bankAccount" placeholder="Enter your back account number" readonly />
         </div>
+        <h5> Parking Lots</h5>
+        <ng-container *ngFor="let parking of editProviderModal.parkings">
+          <div class="mb-3">
+            <label for="spaces" class="form-label">Car Spaces</label>
+            <input type="number" class="form-control" name="spaces" [(ngModel)]="parking.availableSpaces" id="spaces"
+              placeholder="Enter car spaces you are providing" readonly />
+          </div>
+          <div class="mb-3">
+            <label for="typeOfCar" class="form-label">Type of Car</label>
+            <select id="typeOfCar" class="form-select" aria-label="Default select example" name="carType"
+              [(ngModel)]="parking.carType[0]" [disabled]="true">
+              <option selected>Select type of car</option>
+              <option value="Micro">Micro</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="MPV">MPV</option>
+              <option value="Wagon">Wagon</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label id="typeOfBills" class="form-label">Cost / Bill (Hourly)</label>
+            <select id="typeOfBills" class="form-select" aria-label="Default select example"
+              [(ngModel)]="parking.hourRate" name="hourRate" [disabled]="true">
+              <option selected>Select type of bill</option>
+              <option value="3">$3/hour</option>
+              <option value="3.5">$3.5/hour</option>
+              <option value="4">$4/hour</option>
+              <option value="4.5">$4.5/hour</option>
+              <option value="5">$5/hour</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label id="typeOfBills" class="form-label">Cost / Bill (Daily)</label>
+            <select id="typeOfBills" class="form-select" aria-label="Default select example"
+              [(ngModel)]="parking.rate" name="dailyRate" [disabled]="true">
+              <option selected>Select type of bill</option>
+              <option value="18">$18/daily</option>
+              <option value="24">$24/daily</option>
+            </select>
+          </div>
+        </ng-container>
       </div>
       <div class="modal-footer">
         <button class="btn btn-ghost px-4 text-primary" data-bs-dismiss="modal">Discard</button>
@@ -102,8 +149,8 @@
           </div>
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="editProviderModal.username" id="username"
-              placeholder="Enter your username" [disabled]="true" />
+            <input type="text" class="form-control" name="username" [(ngModel)]="editProviderModal.username"
+              id="username" placeholder="Enter your username" [disabled]="true" />
           </div>
           <div class="mb-3">
             <label for="Email" class="form-label">Email</label>

@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignupComponent } from './signup/signup.component';
+import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SignupComponent } from './signup/signup.component';
     CommonModule,
     AuthRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    PasswordStrengthMeterComponent
   ]
 })
 export class AuthModule { }

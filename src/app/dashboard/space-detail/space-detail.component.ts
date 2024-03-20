@@ -193,7 +193,7 @@ export class SpaceDetailComponent {
     this._apiService.PostData('payments', 'create', requestModal).subscribe((res: any) => {
       if (res) {
         this._toastr.success('Booking confirmed successfully!', 'Success!');
-        this._router.navigate(['/dashboard/spaces?userType=consume']);
+        this._router.navigate(['/dashboard/bookings'], { queryParams: { userType: 'consumer' } });
         this.setBookingRequestModal();
         this._loader.stop();
       }

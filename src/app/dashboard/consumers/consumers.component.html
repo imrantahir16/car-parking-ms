@@ -8,6 +8,7 @@
             <th scope="col">#</th>
             <th scope="col">Customer ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Address</th>
             <th scope="col">Birth Date</th>
@@ -20,8 +21,10 @@
         <tbody>
           <tr *ngFor="let consumer of consumers; let ndx = index;">
             <td>{{ndx + 1}}</td>
-            <td>{{consumer._id}}</td>
+            <!-- <td>{{consumer._id}}</td> -->
+            <td>{{'CUSTOMER - ' + '00' + ndx + 1}}</td>
             <td>{{consumer.fName}}</td>
+            <td>{{consumer.username}}</td>
             <td>{{consumer.email}}</td>
             <td>{{consumer.address}}</td>
             <td>{{consumer.birthDate | date : 'dd/MM/yyyy'}}</td>
@@ -79,7 +82,7 @@
             placeholder="Enter your address" readonly />
         </div>
         <div class="mb-3">
-          <label for="birthDate" class="form-label">Birth date</label>
+          <label for="birthDate" class="form-label">Birth Date</label>
           <input type="date" class="form-control" name="birthDate" [(ngModel)]="editConsumerModal.birthDate"
             id="birthDate" readonly />
         </div>
@@ -89,13 +92,17 @@
             id="driverLicense" placeholder="Enter your driving license no." readonly />
         </div>
         <div class="mb-3">
-          <label for="vehiclePlate" class="form-label">Vehicle License plate</label>
+          <label for="vehiclePlate" class="form-label">Vehicle License Plate</label>
           <input type="text" class="form-control" name="vehiclePlate" [(ngModel)]="editConsumerModal.vehiclePlate"
             id="vehiclePlate" placeholder="Enter your driving license no." readonly />
         </div>
+        <div class="mb-3">
+          <label for="bankAccount" class="form-label">Bank Account</label>
+          <input type="text" class="form-control" name="bankAccount" [(ngModel)]="editConsumerModal.bankAccount" id="bankAccount" placeholder="Enter your back account number" readonly />
+        </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-ghost px-4 text-primary" data-bs-dismiss="modal">Discard</button>
+        <button class="btn btn-ghost px-4 text-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

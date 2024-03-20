@@ -35,7 +35,8 @@ export class ProvidersComponent {
       username: '',
       email: '',
       address: '',
-      bankAccount: ''
+      bankAccount: '',
+      parkings: []
     };
   }
 
@@ -91,6 +92,7 @@ export class ProvidersComponent {
       driverLicense: provider.driverLicense,
       vehiclePlate: provider.vehiclePlate,
       bankAccount: provider.bankAccount,
+      parkings: provider.parkings
     };
     $('#editingProviderModal').modal('show');
   }
@@ -165,6 +167,7 @@ export class ProvidersComponent {
       driverLicense: provider.driverLicense,
       vehiclePlate: provider.vehiclePlate,
       bankAccount: provider.bankAccount,
+      parkings: provider.parkings
     };
     $('#viewProviderModal').modal('show');
   }

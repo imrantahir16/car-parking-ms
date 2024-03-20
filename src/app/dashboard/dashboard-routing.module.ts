@@ -10,6 +10,8 @@ import { SpacesComponent } from './spaces/spaces.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SpaceDetailComponent } from './space-detail/space-detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 const routes: Routes = [
   {
@@ -23,35 +25,43 @@ const routes: Routes = [
       },
       {
         path: 'parking-lots',
-        component: ParkingLotsComponent,
+        component: ParkingLotsComponent
       },
       {
         path: 'providers',
-        component: ProvidersComponent,
+        component: ProvidersComponent
       },
       {
         path: 'consumers',
-        component: ConsumersComponent,
+        component: ConsumersComponent
       },
       {
         path: 'bookings',
-        component: BookingsComponent,
+        component: BookingsComponent
       },
       {
         path: 'spaces',
-        component: SpacesComponent,
+        component: SpacesComponent
       },
       {
         path: 'space/:id',
-        component: SpaceDetailComponent,
+        component: SpaceDetailComponent
       },
       {
         path: 'payment',
-        component: PaymentComponent,
+        component: PaymentComponent
       },
       {
         path: 'profile',
-        component: ProfileComponent,
+        component: ProfileComponent
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent
+      },
+      {
+        path: 'transactions',
+        component: TransactionsComponent
       },
     ],
   },

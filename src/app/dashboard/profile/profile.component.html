@@ -37,7 +37,7 @@
         <ng-container *ngIf="this.userModal.userType === 'provider'">
           <div class="mb-3">
             <label for="spaces" class="form-label">Car spaces</label>
-            <input type="text" class="form-control" name="spaces" [disabled]="!this.isEdit" [(ngModel)]="userModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
+            <input type="text" class="form-control" name="spaces" [disabled]="!this.isEdit" [(ngModel)]="userModal.spaces" id="spaces" placeholder="Enter car spaces you are providing" />
           </div>
         </ng-container>
         <ng-container *ngIf="this.userModal.userType === 'consumer'">

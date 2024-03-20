@@ -29,7 +29,9 @@ export class SignupComponent {
       username: '',
       email: '',
       password: '',
+      passwordStrength: 0,
       confirmPassword: '',
+      confirmPasswordStrength: 0,
       address: '',
       birthDate: '',
       driverLicense: '',
@@ -40,8 +42,15 @@ export class SignupComponent {
       carType: '',
       hourRate: '',
       rate: ''
-
     };
+  }
+
+  passwordStengthChecker(strength: any): void {
+    this.authRequestModal.passwordStrength = strength;
+  }
+
+  confirmPasswordStengthChecker(strength: any): void {
+    this.authRequestModal.confirmPasswordStrength = strength;
   }
 
   checkValidation(): boolean {
@@ -72,8 +81,18 @@ export class SignupComponent {
       return false;
     }
 
+    if (this.authRequestModal.passwordStrength < 4) {
+      this._toastr.error('Please meet password strength criteria', 'Error!');
+      return false;
+    }
+
     if (this.authRequestModal.confirmPassword === '') {
       this._toastr.error('Please enter confirm password', 'Error!');
+      return false;
+    }
+
+    if (this.authRequestModal.confirmPasswordStrength < 4) {
+      this._toastr.error('Please meet password strength criteria', 'Error!');
       return false;
     }
 

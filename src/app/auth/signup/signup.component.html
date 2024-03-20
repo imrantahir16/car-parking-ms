@@ -38,11 +38,13 @@
         <label for="Password" class="form-label">Password</label>
         <input type="password" class="form-control" id="Password" name="password" [(ngModel)]="authRequestModal.password"
           placeholder="Password" />
+          <password-strength-meter [password]="authRequestModal.password" (strengthChange)="passwordStengthChecker($event)"></password-strength-meter>
       </div>
       <div class="mb-3 password-input">
         <label for="confirmPassword" class="form-label">Confirm Password</label>
         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="authRequestModal.confirmPassword"
           placeholder="Confirm password" />
+          <password-strength-meter [password]="authRequestModal.confirmPassword" (strengthChange)="confirmPasswordStengthChecker($event)"></password-strength-meter>
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
@@ -50,7 +52,7 @@
       </div>
       <ng-container *ngIf="this.signupAs === 'consumer'">
         <div class="mb-3">
-          <label for="birthDate" class="form-label">Birth date</label>
+          <label for="birthDate" class="form-label">Birth Date</label>
           <input type="date" class="form-control" name="birthDate" [(ngModel)]="authRequestModal.birthDate" id="birthDate" />
         </div>
         <div class="mb-3">
@@ -58,21 +60,21 @@
           <input type="text" class="form-control" name="driverLicense" [(ngModel)]="authRequestModal.driverLicense" id="driverLicense" placeholder="Enter your driving license no." />
         </div>
         <div class="mb-3">
-          <label for="vehiclePlate" class="form-label">Vehicle License plate</label>
+          <label for="vehiclePlate" class="form-label">Vehicle License Plate</label>
           <input type="text" class="form-control" name="vehiclePlate" [(ngModel)]="authRequestModal.vehiclePlate" id="vehiclePlate" placeholder="Enter your driving license no." />
         </div>
       </ng-container>
       <div class="mb-3">
-        <label for="bankAccount" class="form-label">Bank account</label>
+        <label for="bankAccount" class="form-label">Bank Account</label>
         <input type="text" class="form-control" name="bankAccount" [(ngModel)]="authRequestModal.bankAccount" id="bankAccount" placeholder="Enter your back account number" />
       </div>
       <ng-container *ngIf="this.signupAs === 'provider'">
         <div class="mb-3">
-          <label for="spaces" class="form-label">Car spaces</label>
-          <input type="number" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
+          <label for="spaces" class="form-label">Car Spaces</label>
+          <input type="number" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter car spaces you are providing" />
         </div>
         <div class="mb-3">
-          <label for="typeOfCar" class="form-label">Type of car</label>
+          <label for="typeOfCar" class="form-label">Type of Car</label>
           <select id="typeOfCar" class="form-select" aria-label="Default select example" name="carType" [(ngModel)]="authRequestModal.carType">
             <option selected>Select type of car</option>
             <option value="Micro">Micro</option>

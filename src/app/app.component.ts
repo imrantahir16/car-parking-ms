@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter';
+
 
 @Component({
   selector: 'app-root',

@@ -1,64 +1,76 @@
 <div class="dashboard-content">
-  <ng-container *ngIf="this.userType === 'provider'">
-    <h2 class="dashboard-heading">Current Bookings</h2>
-    <div class="table-card">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Park ID</th>
-              <th scope="col">Booking ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Start time</th>
-              <th scope="col">End time</th>
-              <!-- <th scope="col">Duration</th> -->
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let booking of bookings; let ndx = index;">
-              <td>{{ndx + 1}}</td>
-              <td>{{booking._id}}</td>
-              <td>{{userInfo.name}}</td>
-              <td>{{booking.dataBooking}}</td>
-              <td>{{booking.arrivalTime}}</td>
-              <td>{{booking.checkoutTime}}</td>
-              <!-- <td>4 hours</td> -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <h2 class="dashboard-heading">Bookings</h2>
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookings; let ndx = index;">
+            <td>{{ndx + 1}}</td>
+            <!-- <td>{{booking._id}}</td> -->
+            <td>{{'BOOKING - ' + '00' + ndx + 1}}</td>
+            <td>{{userInfo.name}}</td>
+            <td>{{booking.dataBooking}}</td>
+            <td>{{booking.arrivalTime}}</td>
+            <td>{{booking.checkoutTime}}</td>
+            <!-- <td>4 hours</td> -->
+            <td>
+              <div class="table-actions">
+                <button class="btn btn-action-table" (click)="openCancelBookingDialog(booking._id)">
+                  <img src="../../../assets/svgs/trash-icon.svg" />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </ng-container>
-  <ng-container *ngIf="this.userType === 'consumer'">
-    <h2 class="dashboard-heading">Bookings History</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <!-- <th scope="col">Park ID</th> -->
-          <th scope="col">Booking ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Date</th>
-          <th scope="col">Start time</th>
-          <th scope="col">End time</th>
-          <!-- <th scope="col">Duration</th> -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let booking of bookings; let ndx = index;">
-          <td>{{ndx + 1}}</td>
-          <td>{{booking._id}}</td>
-          <td>{{userInfo.name}}</td>
-          <td>{{booking.dataBooking}}</td>
-          <td>{{booking.arrivalTime}}</td>
-          <td>{{booking.checkoutTime}}</td>
-          <!-- <td>4 hours</td> -->
-        </tr>
-      </tbody>
-    </table>
-  </ng-container>
+  </div>
+  <h2 class="dashboard-heading">Confirmed Bookings</h2>
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col" *ngIf="this.userInfo.userType === 'consumer_id'">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of confirmedBookings; let ndx = index;">
+            <td>{{ndx + 1}}</td>
+            <td>{{'BOOKING - ' + '00' + ndx + 1}}</td>
+            <td>{{userInfo.name}}</td>
+            <td>{{booking.dataBooking}}</td>
+            <td>{{booking.arrivalTime}}</td>
+            <td>{{booking.checkoutTime}}</td>
+            <td *ngIf="this.userInfo.userType === 'consumer_id'">
+              <div class="table-actions">
+                <button class="btn btn-action-table" (click)="openAddReviewModal(booking)">
+                  Add Review
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 
@@ -72,36 +84,60 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="mb-3">John Wick |34 Belmore Road | P03</div>
+        <div class="mb-3">{{booking?.provider?.fName}} | {{booking?.parking?.address}}</div>
         <div class="d-flex align-items-center gap-3 mb-3">
           <h5 style="min-width: 90px">Service:</h5>
           <div class="rating">
             <span *ngFor="let star of stars; let i = index" (click)="selectServiceRating(i + 1)"
-              [class.selected]="i < selectedServiceRating">&#9733;</span>
+              [class.selected]="i < addReviewModal.service">&#9733;</span>
           </div>
         </div>
         <div class="d-flex align-items-center gap-3 mb-3">
           <h5 style="min-width: 90px">Hygiene:</h5>
           <div class="rating">
             <span *ngFor="let star of stars; let i = index" (click)="selectHygieneRating(i + 1)"
-              [class.selected]="i < selectedHygieneRating">&#9733;</span>
+              [class.selected]="i < addReviewModal.hygeine">&#9733;</span>
           </div>
         </div>
         <div class="d-flex align-items-center gap-3 mb-3">
           <h5 style="min-width: 90px">Saftey:</h5>
           <div class="rating">
             <span *ngFor="let star of stars; let i = index" (click)="selectSafteyRating(i + 1)"
-              [class.selected]="i < selectedSafteyRating">&#9733;</span>
+              [class.selected]="i < addReviewModal.security">&#9733;</span>
           </div>
         </div>
         <div class="mb-3">
           <label for="commentTextarea" class="form-label">Comment</label>
-          <textarea class="form-control" id="commentTextarea" rows="3"></textarea>
+          <textarea class="form-control" [(ngModel)]="addReviewModal.comment" name="text" id="commentTextarea" rows="3"></textarea>
         </div>
       </div>
       <div class="modal-footer justify-content-start">
-        <button type="button" class="btn btn-primary">Post</button>
+        <button type="button" class="btn btn-primary" (click)="addReview()">Post</button>
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- deleting booking modal -->
+<div class="modal fade" id="deleteBookingModal" tabindex="-1" aria-labelledby="deleteBookingModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteBookingModalLabel">Cancel Booking</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to cancel this booking?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost px-4 text-primary" data-bs-toggle="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-danger px-4" (click)="cancelBooking()">
+          Delete
+        </button>
       </div>
     </div>
   </div>

@@ -19,7 +19,8 @@
         <tbody>
           <tr *ngFor="let parking of parkingLots; let ndx = index;">
             <td>{{ndx + 1}}</td>
-            <td>{{parking.provider?._id}}</td>
+            <!-- <td>{{parking.provider?._id}}</td> -->
+            <td>{{'CUSTOMER - ' + '00' + ndx + 1}}</td>
             <td>{{parking.provider?.fName}}</td>
             <td>{{parking.address}}</td>
             <td>{{parking.hourRate}}</td>
@@ -63,7 +64,7 @@
         </div>
         <div class="mb-3">
           <label for="spaces" class="form-label">Car spaces</label>
-          <input type="number" class="form-control" name="spaces" [(ngModel)]="editParkingLotModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" readonly />
+          <input type="number" class="form-control" name="spaces" [(ngModel)]="editParkingLotModal.spaces" id="spaces" placeholder="Enter car spaces you are providing" readonly />
         </div>
         <div class="mb-3">
           <label for="typeOfCar" class="form-label">Type of car</label>
@@ -121,7 +122,7 @@
           </div>
           <div class="mb-3">
             <label for="spaces" class="form-label">Car spaces</label>
-            <input type="number" class="form-control" name="spaces" [(ngModel)]="editParkingLotModal.spaces" id="spaces" placeholder="Enter card spaces you are providing" />
+            <input type="number" class="form-control" name="spaces" [(ngModel)]="editParkingLotModal.spaces" id="spaces" placeholder="Enter car spaces you are providing" />
           </div>
           <div class="mb-3">
             <label for="typeOfCar" class="form-label">Type of car</label>
