@@ -21,6 +21,7 @@
     "@zxcvbn-ts/core": "^3.0.0",
     "@zxcvbn-ts/language-en": "^3.0.0",
     "angular-password-strength-meter": "^11.0.0",
+    "ng-otp-input": "^1.9.3",
     "ngx-toastr": "^17.0.2",
     "ngx-ui-loader": "^13.0.0",
     "rxjs": "~7.8.0",

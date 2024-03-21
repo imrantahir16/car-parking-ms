@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +12,6 @@ import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter'
 
 @NgModule({
   declarations: [
-    AuthenticationComponent,
     AuthLayoutComponent,
     LoginComponent,
     ForgotPasswordComponent,
