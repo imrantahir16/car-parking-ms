@@ -22,7 +22,7 @@
           <tr *ngFor="let consumer of consumers; let ndx = index;">
             <td>{{ndx + 1}}</td>
             <!-- <td>{{consumer._id}}</td> -->
-            <td>{{'CUSTOMER - ' + '00' + ndx + 1}}</td>
+            <td>{{'CUSTOMER - ' + consumer._id}}</td>
             <td>{{consumer.fName}}</td>
             <td>{{consumer.username}}</td>
             <td>{{consumer.email}}</td>

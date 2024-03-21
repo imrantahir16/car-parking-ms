@@ -37,6 +37,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Parking ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Address</th>
                 <th scope="col">Hourly Rate</th>
@@ -49,6 +50,7 @@
             <tbody>
               <tr *ngFor="let parking of parkingLots | filter : searchTerm; let ndx = index;">
                 <td>{{ndx + 1}}</td>
+                <td>{{'PARKING - ' + parking._id}}</td>
                 <td>{{parking.provider?.fName}}</td>
                 <td>{{parking.address}}</td>
                 <td>${{parking.hourRate}}</td>

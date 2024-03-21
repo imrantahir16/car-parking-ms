@@ -74,3 +74,12 @@ header{
     display: block;
   }
 }
+
+.welcome {
+  color: var(--clr-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 0.25rem;
+  letter-spacing: 0.0265rem;
+  margin-bottom: 0;
+}

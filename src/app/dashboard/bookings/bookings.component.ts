@@ -60,9 +60,14 @@ export class BookingsComponent implements OnInit {
     this._loader.start();
     this._apiService.GetData('bookings', this.userInfo.userType === 'consumer_id' ? this.userInfo.id : `providerbookings/${this.userInfo.id}`).subscribe((res: any) => {
       if (res) {
+        let tempBookings = [];
+        for (var i = 0; i < res.length; i++) {
+          tempBookings[i] = res[i];
+          tempBookings[i].ndx = i + 1;
+        }
         const currentDate: Date = new Date();
-        this.confirmedBookings = res.filter((booking: any) => new Date(booking.dataBooking) < currentDate);
-        this.bookings = res.filter((booking: any) => new Date(booking.dataBooking) > currentDate);
+        this.confirmedBookings = tempBookings.filter((booking: any) => new Date(booking.dataBooking) < currentDate);
+        this.bookings = tempBookings.filter((booking: any) => new Date(booking.dataBooking) > currentDate);
         this._loader.stop();
       }
       else {

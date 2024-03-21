@@ -18,7 +18,7 @@
           <tr *ngFor="let booking of bookings; let ndx = index;">
             <td>{{ndx + 1}}</td>
             <!-- <td>{{booking._id}}</td> -->
-            <td>{{'BOOKING - ' + '00' + ndx + 1}}</td>
+            <td>{{'BOOKING - ' + booking._id}}</td>
             <td>{{userInfo.name}}</td>
             <td>{{booking.dataBooking}}</td>
             <td>{{booking.arrivalTime}}</td>
@@ -54,7 +54,8 @@
         <tbody>
           <tr *ngFor="let booking of confirmedBookings; let ndx = index;">
             <td>{{ndx + 1}}</td>
-            <td>{{'BOOKING - ' + '00' + ndx + 1}}</td>
+            <!-- <td>{{'BOOKING - ' + '00' + ndx + 1}}</td> -->
+            <td>{{'BOOKING - ' + booking._id}}</td>
             <td>{{userInfo.name}}</td>
             <td>{{booking.dataBooking}}</td>
             <td>{{booking.arrivalTime}}</td>
@@ -108,7 +109,8 @@
         </div>
         <div class="mb-3">
           <label for="commentTextarea" class="form-label">Comment</label>
-          <textarea class="form-control" [(ngModel)]="addReviewModal.comment" name="text" id="commentTextarea" rows="3"></textarea>
+          <textarea class="form-control" [(ngModel)]="addReviewModal.comment" name="text" id="commentTextarea"
+            rows="3"></textarea>
         </div>
       </div>
       <div class="modal-footer justify-content-start">

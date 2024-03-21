@@ -7,7 +7,6 @@ const dashboard = () =>
 
 const routes: Routes = [
   { path: '', loadChildren: authModule },
-  // { path: '', loadChildren: dashboard },
   { path: 'dashboard', loadChildren: dashboard },
   { path: 'auth', loadChildren: authModule },
   { path: '**', redirectTo: '' },

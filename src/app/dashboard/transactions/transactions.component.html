@@ -32,10 +32,10 @@
                     <tbody>
                         <tr *ngFor="let payment of payments | filter : searchTerm; let ndx = index;">
                             <td>{{ndx + 1}}</td>
-                            <td>{{'CUSTOMER - ' + '00' + ndx + 1}}</td>
+                            <td>{{'CUSTOMER - ' + payment.customerId}}</td>
                             <td>{{payment.name}}</td>
-                            <td>{{'PARKING - ' + '00' + ndx + 1}}</td>
-                            <td>{{'PROVIDER - ' + '00' + ndx + 1}}</td>
+                            <td>{{'PARKING - ' + payment.parkId}}</td>
+                            <td>{{'PROVIDER - ' + payment.provider}}</td>
                             <td>${{payment.totalAmountPaid | number:'1.2-2'}}</td>
                             <td *ngIf="isAdmin || userInfo.userType === 'provider_id'">${{payment.websiteRevenue | number:'1.2-2'}}</td>
                             <td>${{payment.totalAmountPaid - payment.websiteRevenue | number:'1.2-2'}}</td>

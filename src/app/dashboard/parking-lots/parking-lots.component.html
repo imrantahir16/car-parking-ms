@@ -20,7 +20,7 @@
           <tr *ngFor="let parking of parkingLots; let ndx = index;">
             <td>{{ndx + 1}}</td>
             <!-- <td>{{parking.provider?._id}}</td> -->
-            <td>{{'CUSTOMER - ' + '00' + ndx + 1}}</td>
+            <td>{{'CUSTOMER - ' + parking._id}}</td>
             <td>{{parking.provider?.fName}}</td>
             <td>{{parking.address}}</td>
             <td>{{parking.hourRate}}</td>

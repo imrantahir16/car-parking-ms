@@ -19,7 +19,7 @@
           <tr *ngFor="let provider of providers; let ndx = index;">
             <td>{{ndx + 1}}</td>
             <!-- <td>{{provider._id}}</td> -->
-            <td>{{'PROVIDER - ' + '00' + ndx + 1}}</td>
+            <td>{{'PROVIDER - ' + provider._id}}</td>
             <td>{{provider.fName}}</td>
             <td>{{provider.username}}</td>
             <td>{{provider.email}}</td>

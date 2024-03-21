@@ -8,9 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  userInfo: any;
+
   constructor(
     private sidebarService: SidebarService,
-    private _router: Router) { }
+    private _router: Router) {
+    this.userInfo = JSON.parse(localStorage.getItem('user') || '');
+    console.log(this.userInfo);
+  }
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
