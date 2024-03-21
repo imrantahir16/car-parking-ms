@@ -15,7 +15,6 @@ export class HeaderComponent {
     private sidebarService: SidebarService,
     private _router: Router) {
     this.userInfo = JSON.parse(localStorage.getItem('user') || '');
-    console.log(this.userInfo);
   }
 
   toggleSidebar() {

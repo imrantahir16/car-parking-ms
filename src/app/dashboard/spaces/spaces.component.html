@@ -44,7 +44,10 @@
                 <th scope="col">Daily Rate</th>
                 <th scope="col">Car Spaces</th>
                 <th scope="col">Reserved Spaces</th>
+                <th scope="col">Promo Date</th>
+                <th scope="col">Discount</th>
                 <th scope="col">Actions</th>
+                <th scope="col">Promo</th>
               </tr>
             </thead>
             <tbody>
@@ -57,6 +60,8 @@
                 <td>${{parking.rate}}</td>
                 <td>{{parking.availableSpaces}}</td>
                 <td>{{parking.reservedSpaces}}</td>
+                <td>{{parking.isPromo ? (parking.promoDate | date : 'dd/MM/yyyy') : '-'}}</td>
+                <td>{{parking.isPromo ? parking.promoDiscount + '%' : '-'}}</td>
                 <td>
                   <div class="table-actions">
                     <button class="btn btn-action-table" (click)="openViewProviderDialog(parking)">
@@ -67,6 +72,13 @@
                     </button>
                     <button class="btn btn-action-table" (click)="openDeleteParkingLotDialog(parking._id)">
                       <img src="../../../assets/svgs/trash-icon.svg" />
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-actions">
+                    <button class="btn btn-secondary" (click)="showAddPromoDialog(parking)">
+                      {{parking.isPromo ? 'Update Promo' : 'Add Promo'}}
                     </button>
                   </div>
                 </td>
@@ -91,6 +103,8 @@
                 <th scope="col">Daily Rate</th>
                 <th scope="col">Car Spaces</th>
                 <th scope="col">Reserved Spaces</th>
+                <th scope="col">Promo Date</th>
+                <th scope="col">Discount</th>
                 <th scope="col">Reviews</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -104,6 +118,8 @@
                 <td>${{parking.rate}}</td>
                 <td>{{parking.availableSpaces}}</td>
                 <td>{{parking.reservedSpaces}}</td>
+                <td>{{parking.isPromo ? (parking.promoDate | date : 'dd/MM/yyyy') : '-'}}</td>
+                <td>{{parking.isPromo ? parking.promoDiscount + '%' : '-'}}</td>
                 <td class="pointer" (click)="showReviews(parking.reviews)">{{parking.reviews.length}}</td>
                 <td>
                   <div class="table-actions">
@@ -121,9 +137,38 @@
   </ng-container>
 </div>
 
-<!-- view reviews Modal -->
-<div class="modal fade" id="viewReviewsModal" tabindex="-1" aria-labelledby="viewReviewsModalLabel"
+<!-- add parking promo Modal -->
+<div class="modal fade" id="addParkingPromoModal" tabindex="-1" aria-labelledby="addParkingPromoModalLabel"
   aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Parking Promo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form (ngSubmit)="addPromo()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="promotionDate" class="form-label">Promotion Date</label>
+            <input type="date" class="form-control" name="promotionDate" [(ngModel)]="addPromoModal.promoDate" id="promotionDate" />
+          </div>
+          <div class="mb-3">
+            <label for="discount" class="form-label">Discount (%)</label>
+            <input type="text" class="form-control" name="discount" [(ngModel)]="addPromoModal.promoDiscount" id="discount" placeholder="Enter discount (%)" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost px-4 text-primary" data-bs-dismiss="modal">Discard</button>
+          <button class="btn btn-primary px-4" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- view reviews Modal -->
+<div class="modal fade" id="viewReviewsModal" tabindex="-1" aria-labelledby="viewReviewsModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

@@ -18,13 +18,11 @@ export class SpacesComponent implements OnInit {
   reviews: any[];
 
   userType: string = 'consumer';
-  isSearchResultByDate: boolean = false;
-  isSearchResultByLocation: boolean = false;
-
   userInfo: any;
 
   parkingId: string;
   editParkingLotModal: any;
+  addPromoModal: any;
 
   constructor(
     private _route: ActivatedRoute,
@@ -35,6 +33,7 @@ export class SpacesComponent implements OnInit {
     this.parkingLots = [];
     this.reviews = [];
     this.parkingId = '';
+    this.setAddPromoModal();
     this.setEditParkingLotModal();
   }
 
@@ -42,9 +41,16 @@ export class SpacesComponent implements OnInit {
     this.getParkingLots();
     this._route.queryParams.subscribe((p: any) => {
       this.userType = p.userType;
-      this.isSearchResultByLocation = false;
-      this.isSearchResultByDate = false;
     });
+  }
+
+  setAddPromoModal(): void {
+    this.addPromoModal = {
+      parkingId: '',
+      promoDate: '',
+      promoDiscount: '',
+      isUpdate: false
+    }
   }
 
   setEditParkingLotModal(): void {
@@ -62,7 +68,24 @@ export class SpacesComponent implements OnInit {
     this._loader.start();
     this._apiService.GetData('parkings', '').subscribe((res: any) => {
       if (res) {
+
         this.parkingLots = res;
+        const currentDate: Date = new Date();
+
+        for (var i = 0; i < this.parkingLots.length; i++) {
+
+          if (this.parkingLots[i].promoDate) {
+            if (new Date(this.parkingLots[i].promoDate) > currentDate) {
+              this.parkingLots[i].isPromo = true;
+            } else {
+              this.parkingLots[i].isPromo = false;
+            }
+          } else {
+            this.parkingLots[i].isPromo = false;
+          }
+
+        }
+
         if (this.userInfo.userType === 'provider_id') {
           this.parkingLots = this.parkingLots.filter(x => x.provider !== null);
           this.parkingLots = this.parkingLots.filter(x => x.providerId === this.userInfo.id);
@@ -209,6 +232,62 @@ export class SpacesComponent implements OnInit {
   showReviews(reviews: any[]): void {
     this.reviews = reviews;
     $('#viewReviewsModal').modal('show');
+  }
+
+  showAddPromoDialog(parking: any): void {
+    this.addPromoModal.parkingId = parking._id;
+    if (parking.isPromo) {
+      this.addPromoModal.promoDate = parking.promoDate;
+      this.addPromoModal.promoDiscount = parking.promoDiscount;
+      this.addPromoModal.isUpdate = true;
+    } else {
+      this.addPromoModal.isUpdate = false;
+    }
+
+    $('#addParkingPromoModal').modal('show');
+  }
+
+  checkAddPromoValidation(): boolean {
+    if (this.addPromoModal.parkingId === '') {
+      this._toastr.error('Please enter address', 'Error!');
+      return false;
+    }
+
+    if (this.addPromoModal.promoDate === '') {
+      this._toastr.error('Please enter promo date', 'Error!');
+      return false;
+    }
+
+    if (this.addPromoModal.promoDiscount === '') {
+      this._toastr.error('Please enter promo discount', 'Error!');
+      return false;
+    }
+
+    return true;
+  }
+
+  addPromo() {
+    // Check Validation
+    let isValid = this.checkAddPromoValidation();
+    if (!isValid) {
+      return;
+    }
+    this._loader.start();
+    this._apiService.PostData('parkings', 'addPromo', this.addPromoModal).subscribe((res: any) => {
+      if (res) {
+        this._loader.stop();
+        $('#addParkingPromoModal').modal('hide');
+        this.setAddPromoModal();
+        this.getParkingLots();
+      }
+      else {
+        this._loader.stop();
+        this._toastr.error(res.data.message, 'Error!');
+      }
+    }, (err: any) => {
+      this._loader.stop();
+      this._toastr.error(err.error.message, 'Error!');
+    })
   }
 
 }
