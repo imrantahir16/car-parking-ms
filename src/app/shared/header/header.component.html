@@ -1,15 +1,15 @@
 <header>
   <div class="d-flex">
-    <h4 class="welcome">Welcome Back {{userInfo.userName}}!!</h4>
+    <!-- <h4 class="welcome">Welcome Back {{userInfo.userName}}!!</h4> -->
     <button class="btn btn-menu btn-custom" (click)="toggleSidebar()">
       <img src="../../../assets/svgs/hamburger-menu-icon.svg" />
     </button>
   </div>
   <div class="dropdown">
     <button type="button" class="btn btn-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-      <img class="profile-image" src="https://picsum.photos/id/64/200/300"/>
+      <!-- <img class="profile-image" src="https://picsum.photos/id/64/200/300"/> -->
       <div class="profile">
-        <p class="username">username</p>
+        <p class="username">Hi {{userInfo.userName}}!!</p>
       </div>
       <img class="chevron-icon" src="../../../assets/svgs/chevron-down-icon.svg" />
     </button>

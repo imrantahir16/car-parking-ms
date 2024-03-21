@@ -188,7 +188,7 @@ export class SignupComponent {
       }
     }, (err: any) => {
       this._loader.stop();
-      this._toastr.error('Connection Problem', 'Error!');
+      this._toastr.error(err.error.message, 'Error!');
     })
 
   }

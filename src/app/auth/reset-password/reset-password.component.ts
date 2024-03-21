@@ -11,7 +11,6 @@ import { ApiCallingService } from 'src/app/shared/generic-api-calling.service';
 })
 export class ResetPasswordComponent {
 
-  user: any;
   resetPasswordModal: any;
 
   constructor(
@@ -19,19 +18,27 @@ export class ResetPasswordComponent {
     private _loader: NgxUiLoaderService,
     private _toastr: ToastrService,
     private _router: Router
-  ){
-    // this.user = this._authService.getUser();
-    // if (!this.user) this._router.navigate(['/']);
+  ) {
     this.setResetPasswordModal();
   }
 
   setResetPasswordModal(): void {
     this.resetPasswordModal = {
-      // email: this.user.email,
-      // code: this._authService.getOTP(),
+      email: localStorage.getItem('email'),
+      code: localStorage.getItem('otp'),
       password: '',
-      confirmPassword: ''
+      passwordStrength: 0,
+      confirmPassword: '',
+      confirmPasswordStrength: 0
     }
+  }
+
+  passwordStengthChecker(strength: any): void {
+    this.resetPasswordModal.passwordStrength = strength;
+  }
+
+  confirmPasswordStengthChecker(strength: any): void {
+    this.resetPasswordModal.confirmPasswordStrength = strength;
   }
 
   checkValidation(): boolean {
@@ -52,8 +59,8 @@ export class ResetPasswordComponent {
       return false;
     }
 
-    if (this.resetPasswordModal.password.length < 8) { 
-      this._toastr.error('Password must be atleast 8 characters', 'Error!');
+    if (this.resetPasswordModal.passwordStrength < 4) {
+      this._toastr.error('Please meet password strength criteria', 'Error!');
       return false;
     }
 
@@ -62,8 +69,8 @@ export class ResetPasswordComponent {
       return false;
     }
 
-    if (this.resetPasswordModal.confirmPassword.length < 8) { 
-      this._toastr.error('Password must be atleast 8 characters', 'Error!');
+    if (this.resetPasswordModal.confirmPasswordStrength < 4) {
+      this._toastr.error('Please meet password strength criteria', 'Error!');
       return false;
     }
 
@@ -74,28 +81,28 @@ export class ResetPasswordComponent {
 
     return true;
   }
-  
+
   resetPassword() {
 
-    // if (!this.checkValidation()) return;
+    if (!this.checkValidation()) return;
 
-    // this._loader.start();
-    // this._apiService.PostData('user', 'resetPassword', this.resetPasswordModal).subscribe((res: any) => {
-    //   if (res.success) {
-    //     this._toastr.success(res.message, 'Success!');
-    //     setTimeout(() => {
-    //       this._router.navigate(['/']);
-    //     }, 2000);
-    //     this._loader.stop();
-    //   }
-    //   else {
-    //     this._loader.stop();
-    //     this._toastr.error(res.message, 'Error!');
-    //   }
-    // }, (err: any) => {
-    //   this._loader.stop();
-    //   this._toastr.error('Connection Problem', 'Error!');
-    // })
+    this._loader.start();
+    this._apiService.PostData('users', 'reset', this.resetPasswordModal).subscribe((res: any) => {
+      if (res) {
+        this._toastr.success(res.message, 'Success!');
+        setTimeout(() => {
+          this._router.navigate(['/']);
+        }, 2000);
+        this._loader.stop();
+      }
+      else {
+        this._loader.stop();
+        this._toastr.error(res.message, 'Error!');
+      }
+    }, (err: any) => {
+      this._loader.stop();
+      this._toastr.error('Connection Problem', 'Error!');
+    })
 
   }
 

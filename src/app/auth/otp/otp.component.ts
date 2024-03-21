@@ -13,7 +13,7 @@ import { ApiCallingService } from 'src/app/shared/generic-api-calling.service';
   styleUrl: './otp.component.css'
 })
 export class OtpComponent {
-  user: any;
+  email: string;
   otpRequest: any;
 
   constructor(
@@ -22,14 +22,13 @@ export class OtpComponent {
     private _toastr: ToastrService,
     private _router: Router
   ) {
-    // this.user = this._authService.getUser();
-    // if (!this.user) this._router.navigate(['/']);
+    this.email = localStorage.getItem('email') || '';
     this.setOTPModal();
   }
 
   setOTPModal(): void {
     this.otpRequest = {
-      // email: this.user.email,
+      email: this.email,
       code: ''
     }
   }
@@ -60,29 +59,25 @@ export class OtpComponent {
   }
 
   verifyOTP() {
-    // if (!this.checkValidation()) return;
-    // this._loader.start();
-    // this._apiService.PostData('user', 'verifyOTP', this.otpRequest).subscribe((res: any) => {
-    //   if (res.success) {
-    //     this._toastr.success(res.message, 'Success!');
-    //     this._authService.setOTP(res.data.code);
-    //     this._authService.setUser(res.data.user);
-    //     setTimeout(() => {
-    //       this._router.navigate(['/reset-password']);
-    //     }, 2000);
-    //     this._loader.stop();
-    //   }
-    //   else {
-    //     this._loader.stop();
-    //     this._toastr.error(res.message, 'Error!');
-    //   }
-    // }, (err: any) => {
-    //   this._loader.stop();
-    //   this._toastr.error('Connection Problem', 'Error!');
-    // })
-
-    // temp
-    console.log(this.otpRequest.code);
-    this._router.navigate(['/auth/reset-password']);
+    if (!this.checkValidation()) return;
+    this._loader.start();
+    this._apiService.PostData('users', 'verify', this.otpRequest).subscribe((res: any) => {
+      if (res) {
+        this._toastr.success(res.message, 'Success!');
+        localStorage.setItem('otp', this.otpRequest.code);
+        setTimeout(() => {
+          this._router.navigate(['/reset-password']);
+        }, 2000);
+        this._loader.stop();
+      }
+      else {
+        this._loader.stop();
+        this._toastr.error(res.message, 'Error!');
+      }
+    }, (err: any) => {
+      this._loader.stop();
+      // this._toastr.error('Connection Problem', 'Error!');
+      this._toastr.error(err.error.message, 'Error!');
+    })
   }
 }

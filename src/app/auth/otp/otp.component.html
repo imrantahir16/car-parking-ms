@@ -1,20 +1,20 @@
 <div class="auth-content">
   <div class="auth-body">
     <div class="image-container">
-      <img src="../../../assets/images/car-parking-image.jpeg"/>
+      <img src="../../../assets/images/car-parking-image.jpeg" />
     </div>
     <div class="body-content">
       <h1 class="auth-title text-center">OTP</h1>
       <p class="mb-0">Please enter the OTP sent to</p>
-      <strong class="mb-3">email&#64;example.com</strong>
-      <form class="auth-form mt-3" (ngSubmit)="verifyOTP()">
+      <strong class="mb-3">{{email}}</strong>
+      <!-- <form class="auth-form mt-3" (ngSubmit)="verifyOTP()"> -->
         <div class="otp-inputs">
           <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
         </div>
         <div class="d-flex flex-column align-items-center justify-content-between mt-3">
-          <button class="btn btn-primary" type="submit">Verify</button>
+          <button class="btn btn-primary" (click)="verifyOTP()">Verify</button>
         </div>
-      </form>
+      <!-- </form> -->
     </div>
   </div>
 </div>

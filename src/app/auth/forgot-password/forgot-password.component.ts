@@ -10,6 +10,7 @@ import { ApiCallingService } from 'src/app/shared/generic-api-calling.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
+
   forgetPasswordModal: any;
 
   constructor(
@@ -34,38 +35,35 @@ export class ForgotPasswordComponent {
       return false;
     }
 
-    // const filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    // if (!filter.test(this.forgetPasswordModal.email)) {
-    //   this._toastr.error('Invalid email address', 'Error!');
-    //   return false;
-    // }
+    const filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (!filter.test(this.forgetPasswordModal.email)) {
+      this._toastr.error('Invalid email address', 'Error!');
+      return false;
+    }
 
     return true;
   }
 
   forgetPassword() {
-    // if (!this.checkValidation()) return;
-    // this._loader.start();
-    // this._apiService.PostData('user', 'forget', this.forgetPasswordModal).subscribe((res: any) => {
-    //   if (res.success) {
-    //     this._toastr.success(res.message, 'Success!');
-    //     this._authService.setUser(res.data.user);
-    //     setTimeout(() => {
-    //       this._router.navigate(['/otp']);
-    //     }, 2000);
-    //     this._loader.stop();
-    //   }
-    //   else {
-    //     this._loader.stop();
-    //     this._toastr.error(res.message, 'Error!');
-    //   }
-    // }, (err: any) => {
-    //   this._loader.stop();
-    //   this._toastr.error('Connection Problem', 'Error!');
-    // })
-
-    // temp
-    this.navigateToPassword();
+    if (!this.checkValidation()) return;
+    this._loader.start();
+    this._apiService.PostData('users', 'forget', this.forgetPasswordModal).subscribe((res: any) => {
+      if (res) {
+        localStorage.setItem('email', this.forgetPasswordModal.email);
+        this._toastr.success(res.message, 'Success!');
+        setTimeout(() => {
+          this._router.navigate(['/otp']);
+        }, 2000);
+        this._loader.stop();
+      }
+      else {
+        this._loader.stop();
+        this._toastr.error(res.message, 'Error!');
+      }
+    }, (err: any) => {
+      this._loader.stop();
+      this._toastr.error(err.error.message, 'Error!');
+    })
 
   }
 

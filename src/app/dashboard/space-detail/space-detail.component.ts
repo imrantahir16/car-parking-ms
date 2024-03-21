@@ -102,6 +102,18 @@ export class SpaceDetailComponent {
     this._apiService.GetData('parkings', this.parkingId).subscribe((res: any) => {
       if (res) {
         this.parkingLot = res;
+        const currentDate: Date = new Date();
+        if (this.parkingLot.promoDate) {
+
+          if (new Date(this.parkingLot.promoDate) > currentDate) {
+            this.parkingLot.isPromo = true;
+          } else {
+            this.parkingLot.isPromo = false;
+          }
+
+        } else {
+          this.parkingLot.isPromo = false;
+        }
         this.bookingRequestModal.price = this.parkingLot.hourRate;
         this._loader.stop();
       }
@@ -138,9 +150,20 @@ export class SpaceDetailComponent {
       if (this.bookingRequestModal.hourDifference <= 0) {
         this._toastr.error('Checkout time must be greater then checkin time', 'Error!');
       }
+
       this.bookingRequestModal.totalPrice = this.bookingRequestModal.price * this.bookingRequestModal.hourDifference;
+
     } else {
       this.bookingRequestModal.totalPrice = this.bookingRequestModal.price;
+    }
+
+    // checking discount
+    if (this.parkingLot.isPromo) {
+      if (new Date(this.bookingRequestModal.reservationDate).toDateString() === new Date(this.parkingLot.promoDate).toDateString()) {
+        // apply discount
+        const discount = this.bookingRequestModal.totalPrice * this.parkingLot.promoDiscount / 100;
+        this.bookingRequestModal.totalPrice = this.bookingRequestModal.totalPrice - discount;
+      }
     }
 
     $('#reservationModal').modal('show');
