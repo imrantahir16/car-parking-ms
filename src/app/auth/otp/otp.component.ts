@@ -82,6 +82,7 @@ export class OtpComponent {
     // })
 
     // temp
-    this._router.navigate(['/reset-password']);
+    console.log(this.otpRequest.code);
+    this._router.navigate(['/auth/reset-password']);
   }
 }
