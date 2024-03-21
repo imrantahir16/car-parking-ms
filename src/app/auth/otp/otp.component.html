@@ -1,0 +1,15 @@
+<div class="auth-content">
+  <div class="body-content">
+    <h1 class="auth-title text-center">OTP</h1>
+    <p class="mb-0">Please enter the OTP sent to</p>
+    <strong class="mb-3">email&#64;example.com</strong>
+    <form class="auth-form mt-3" (ngSubmit)="verifyOTP()">
+      <div class="otp-inputs">
+        <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+      </div>
+      <div class="d-flex flex-column align-items-center justify-content-between mt-3">
+        <button class="btn btn-primary" type="submit">Verify</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -22,6 +22,44 @@ header{
 
 }
 
+.btn.btn-dropdown{
+  padding: 6px !important;
+  border-radius: 100vh !important;
+  border: 1px solid #DADADA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: none;
+}
+
+.profile,
+.chevron-icon{
+  display: block;
+}
+
+.profile-image{
+  max-width: 2.5rem;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid var(--clr-neutral-100);
+  object-fit: cover;
+  margin-right: .5rem;
+}
+
+.profile > p{
+  margin-bottom: 0;
+  text-align: start;
+}
+
+.profile > .username{
+  color: #111213;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
 .dropdown-menu{
   width: 14rem;
   padding: 1rem;
