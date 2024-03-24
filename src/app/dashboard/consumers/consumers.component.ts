@@ -45,7 +45,7 @@ export class ConsumersComponent implements OnInit {
 
   getConsumers() {
     this._loader.start();
-    this._apiService.GetData('users', 'userType?userType=consumer_id').subscribe((res: any) => {
+    this._apiService.GetData('users', 'userType/consumer_id').subscribe((res: any) => {
       if (res) {
         this.consumers = res;
         this._loader.stop();

@@ -38,7 +38,7 @@
                             <td>{{'PROVIDER - ' + payment.provider}}</td>
                             <td>${{payment.totalAmountPaid | number:'1.2-2'}}</td>
                             <td *ngIf="isAdmin || userInfo.userType === 'provider_id'">${{payment.websiteRevenue | number:'1.2-2'}}</td>
-                            <td>${{payment.totalAmountPaid - payment.websiteRevenue | number:'1.2-2'}}</td>
+                            <td *ngIf="userInfo.userType === 'provider_id'">${{payment.totalAmountPaid - payment.websiteRevenue | number:'1.2-2'}}</td>
                         </tr>
                     </tbody>
                 </table>

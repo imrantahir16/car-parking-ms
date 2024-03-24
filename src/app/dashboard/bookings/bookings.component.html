@@ -62,8 +62,13 @@
             <td>{{booking.checkoutTime}}</td>
             <td *ngIf="this.userInfo.userType === 'consumer_id'">
               <div class="table-actions">
-                <button class="btn btn-action-table" (click)="openAddReviewModal(booking)">
+                <button *ngIf="!booking.isReviewAdded" class="btn btn-primary" (click)="openAddReviewModal(booking)">
                   Add Review
+                </button>
+              </div>
+              <div class="table-actions">
+                <button *ngIf="booking.isReviewAdded" class="btn btn-primary" (click)="openViewReviewModal(booking)">
+                  See Review
                 </button>
               </div>
             </td>
@@ -74,6 +79,50 @@
   </div>
 </div>
 
+<!-- view review Modal -->
+<div class="modal fade" id="viewReviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="viewReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="viewReviewModalLabel">View Review</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">{{booking?.provider?.fName}} | {{booking?.parking?.address}}</div>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h5 style="min-width: 90px">Service:</h5>
+          <div class="rating">
+            <span *ngFor="let star of stars; let i = index"
+              [class.selected]="i < addReviewModal.service">&#9733;</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h5 style="min-width: 90px">Hygiene:</h5>
+          <div class="rating">
+            <span *ngFor="let star of stars; let i = index"
+              [class.selected]="i < addReviewModal.hygeine">&#9733;</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h5 style="min-width: 90px">Saftey:</h5>
+          <div class="rating">
+            <span *ngFor="let star of stars; let i = index"
+              [class.selected]="i < addReviewModal.security">&#9733;</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="commentTextarea" class="form-label">Comment</label>
+          <textarea class="form-control" [disabled]="true" [(ngModel)]="addReviewModal.comment" name="text" id="commentTextarea"
+            rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- review Modal -->
 <div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

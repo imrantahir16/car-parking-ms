@@ -42,7 +42,7 @@ export class ProvidersComponent {
 
   getProviders() {
     this._loader.start();
-    this._apiService.GetData('users', 'userType?userType=provider_id').subscribe((res: any) => {
+    this._apiService.GetData('users', 'userType/provider_id').subscribe((res: any) => {
       if (res) {
         this.providers = res;
         this._loader.stop();

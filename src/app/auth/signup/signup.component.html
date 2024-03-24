@@ -18,16 +18,18 @@
           </span>
         </label>
       </div>
-    </div>  
-  
+    </div>
+
     <form class="auth-form" (ngSubmit)="register()">
       <div class="mb-3">
         <label for="FName" class="form-label">Full Name</label>
-        <input type="text" class="form-control" name="FName" [(ngModel)]="authRequestModal.fName" id="FName" placeholder="Enter your full name here" />
+        <input type="text" class="form-control" name="FName" [(ngModel)]="authRequestModal.fName" id="FName"
+          placeholder="Enter your full name here" />
       </div>
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="authRequestModal.username" id="username" placeholder="Enter your username" />
+        <input type="text" class="form-control" name="username" [(ngModel)]="authRequestModal.username" id="username"
+          placeholder="Enter your username" />
       </div>
       <div class="mb-3">
         <label for="Email" class="form-label">Email</label>
@@ -36,46 +38,55 @@
       </div>
       <div class="mb-3 password-input">
         <label for="Password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="Password" name="password" [(ngModel)]="authRequestModal.password"
-          placeholder="Password" />
-          <password-strength-meter [password]="authRequestModal.password" (strengthChange)="passwordStengthChecker($event)"></password-strength-meter>
+        <input type="password" class="form-control" id="Password" name="password"
+          [(ngModel)]="authRequestModal.password" placeholder="Password" />
+        <password-strength-meter [password]="authRequestModal.password"
+          (strengthChange)="passwordStengthChecker($event)"></password-strength-meter>
       </div>
       <div class="mb-3 password-input">
         <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="authRequestModal.confirmPassword"
-          placeholder="Confirm password" />
-          <password-strength-meter [password]="authRequestModal.confirmPassword" (strengthChange)="confirmPasswordStengthChecker($event)"></password-strength-meter>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+          [(ngModel)]="authRequestModal.confirmPassword" placeholder="Confirm password" />
+        <password-strength-meter [password]="authRequestModal.confirmPassword"
+          (strengthChange)="confirmPasswordStengthChecker($event)"></password-strength-meter>
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
-        <input type="text" class="form-control" name="address" [(ngModel)]="authRequestModal.address" id="address" placeholder="Enter your address" />
+        <input type="text" class="form-control" name="address" [(ngModel)]="authRequestModal.address" id="address"
+          placeholder="Enter your address" />
+      </div>
+      <div class="mb-3">
+        <label for="birthDate" class="form-label">Birth Date</label>
+        <input type="date" class="form-control" name="birthDate" [(ngModel)]="authRequestModal.birthDate"
+          id="birthDate" />
       </div>
       <ng-container *ngIf="this.signupAs === 'consumer'">
         <div class="mb-3">
-          <label for="birthDate" class="form-label">Birth Date</label>
-          <input type="date" class="form-control" name="birthDate" [(ngModel)]="authRequestModal.birthDate" id="birthDate" />
-        </div>
-        <div class="mb-3">
           <label for="driverLicense" class="form-label">Driving License</label>
-          <input type="text" class="form-control" name="driverLicense" [(ngModel)]="authRequestModal.driverLicense" id="driverLicense" placeholder="Enter your driving license no." />
+          <input type="text" class="form-control" name="driverLicense" [(ngModel)]="authRequestModal.driverLicense"
+            id="driverLicense" placeholder="Enter your driving license no." />
         </div>
         <div class="mb-3">
           <label for="vehiclePlate" class="form-label">Vehicle License Plate</label>
-          <input type="text" class="form-control" name="vehiclePlate" [(ngModel)]="authRequestModal.vehiclePlate" id="vehiclePlate" placeholder="Enter your driving license no." />
+          <input type="text" class="form-control" name="vehiclePlate" [(ngModel)]="authRequestModal.vehiclePlate"
+            id="vehiclePlate" placeholder="Enter your driving license no." />
         </div>
       </ng-container>
       <div class="mb-3">
         <label for="bankAccount" class="form-label">Bank Account</label>
-        <input type="text" class="form-control" name="bankAccount" [(ngModel)]="authRequestModal.bankAccount" id="bankAccount" placeholder="Enter your back account number" />
+        <input type="text" class="form-control" name="bankAccount" [(ngModel)]="authRequestModal.bankAccount"
+          id="bankAccount" placeholder="Enter your back account number" />
       </div>
       <ng-container *ngIf="this.signupAs === 'provider'">
         <div class="mb-3">
           <label for="spaces" class="form-label">Car Spaces</label>
-          <input type="number" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces" placeholder="Enter car spaces you are providing" />
+          <input type="number" class="form-control" name="spaces" [(ngModel)]="authRequestModal.spaces" id="spaces"
+            placeholder="Enter car spaces you are providing" />
         </div>
         <div class="mb-3">
           <label for="typeOfCar" class="form-label">Type of Car</label>
-          <select id="typeOfCar" class="form-select" aria-label="Default select example" name="carType" [(ngModel)]="authRequestModal.carType">
+          <select id="typeOfCar" class="form-select" aria-label="Default select example" name="carType"
+            [(ngModel)]="authRequestModal.carType">
             <option selected>Select type of car</option>
             <option value="Micro">Micro</option>
             <option value="Hatchback">Hatchback</option>
@@ -87,7 +98,8 @@
         </div>
         <div class="mb-3">
           <label id="typeOfBills" class="form-label">Cost / Bill (Hourly)</label>
-          <select id="typeOfBills" class="form-select" aria-label="Default select example" [(ngModel)]="authRequestModal.hourRate" name="hourRate">
+          <select id="typeOfBills" class="form-select" aria-label="Default select example"
+            [(ngModel)]="authRequestModal.hourRate" name="hourRate">
             <option selected>Select type of bill</option>
             <option value="3">$3/hour</option>
             <option value="3.5">$3.5/hour</option>
@@ -98,7 +110,8 @@
         </div>
         <div class="mb-3">
           <label id="typeOfBills" class="form-label">Cost / Bill (Daily)</label>
-          <select id="typeOfBills" class="form-select" aria-label="Default select example" [(ngModel)]="authRequestModal.rate" name="dailyRate">
+          <select id="typeOfBills" class="form-select" aria-label="Default select example"
+            [(ngModel)]="authRequestModal.rate" name="dailyRate">
             <option selected>Select type of bill</option>
             <option value="18">$18/daily</option>
             <option value="24">$24/daily</option>

@@ -62,6 +62,14 @@ export class BookingsComponent implements OnInit {
       if (res) {
         const currentDate: Date = new Date();
         this.confirmedBookings = res.filter((booking: any) => new Date(booking.dataBooking) < currentDate);
+        for (var i = 0; i < this.confirmedBookings.length; i++) {
+          const index = this.confirmedBookings[i].reviews.findIndex((x : any)=> x.consumerId === this.userInfo.id);
+          if (index !== -1) {
+            this.confirmedBookings[i].isReviewAdded = true;
+          } else {
+            this.confirmedBookings[i].isReviewAdded = false;
+          }
+        }
         this.bookings = res.filter((booking: any) => new Date(booking.dataBooking) > currentDate);
         this._loader.stop();
       }
@@ -172,6 +180,23 @@ export class BookingsComponent implements OnInit {
       this._loader.stop();
       this._toastr.error(err.error.message, 'Error!');
     })
+  }
+
+  openViewReviewModal(booking: any): void {
+    this.booking = booking;
+    const review = this.booking.reviews.find((x : any)=> x.consumerId === this.userInfo.id);
+    this.addReviewModal = {
+      providerId: this.booking.providerId,
+      parkingId: this.booking.parkingId,
+      consumerId: this.booking.consumerId,
+      consumerName: this.booking.consumer.fName,
+      address: this.booking.parking.address,
+      service: review.service,
+      hygeine: review.hygeine,
+      security: review.security,
+      comment: review.comment
+    }
+    $('#viewReviewModal').modal('show');
   }
 
 }

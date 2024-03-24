@@ -9,6 +9,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { AuthGuard } from './shared/auth.guard';
 import { InterceptorService } from './shared/interceptorservice';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordStrengthMeterComponent } from 'angular-password-strength-meter';
 import { provideZxvbnServiceForPSM } from 'angular-password-strength-meter/zxcvbn';
 
@@ -19,6 +20,7 @@ import { provideZxvbnServiceForPSM } from 'angular-password-strength-meter/zxcvb
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       newestOnTop: true,
       progressBar: false,

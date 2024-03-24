@@ -56,6 +56,8 @@ export class SpacesComponent implements OnInit {
   setEditParkingLotModal(): void {
     this.editParkingLotModal = {
       providerId: this.userInfo.id,
+      availableSpaces: '',
+      reservedSpaces: '',
       spaces: '',
       carType: '',
       hourRate: '',
@@ -131,6 +133,8 @@ export class SpacesComponent implements OnInit {
     this.parkingId = parkingLot._id;
     this.editParkingLotModal = {
       spaces: parkingLot.spaces,
+      availableSpaces: parkingLot.spaces,
+      reservedSpaces: parkingLot.reservedSpaces,
       carType: parkingLot.carType,
       hourRate: parkingLot.hourRate,
       address: parkingLot.address,
@@ -175,6 +179,7 @@ export class SpacesComponent implements OnInit {
     if (!isValid) {
       return;
     }
+    this.editParkingLotModal.availableSpaces = this.editParkingLotModal.spaces;
     this._loader.start();
     this._apiService.PutData('parkings', this.parkingId, this.editParkingLotModal).subscribe((res: any) => {
       if (res) {
