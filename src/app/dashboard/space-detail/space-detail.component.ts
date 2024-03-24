@@ -191,7 +191,8 @@ export class SpaceDetailComponent {
       return;
     }
 
-    let requestModal = {
+    const currentDate = new Date();
+    const requestModal = {
       parkingId: this.parkingId,
       consumerId: this.userInfo.id,
       arrivalTime: this.bookingRequestModal.checkInTime,
@@ -204,6 +205,7 @@ export class SpaceDetailComponent {
       customerId: this.userInfo.id,
       name: this.userInfo.name,
       dataBooking: this.bookingRequestModal.reservationDate,
+      isConfirmedBooking: new Date(this.bookingRequestModal.reservationDate) < currentDate ? true : false,
       creditCard: {
         nameOnCard: this.bookingRequestModal.name,
         cardNumber: this.bookingRequestModal.cardNumber,
